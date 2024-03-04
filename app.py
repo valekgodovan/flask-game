@@ -15,6 +15,7 @@ def index():
 def live():
     live = GameOfLife()
     live.form_new_generation()
+    live.counter += 1
     return render_template(
         'live.html',
         live=live,
