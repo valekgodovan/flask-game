@@ -5,11 +5,13 @@
 <a href="{{ url_for('live') }}" class="btn btn-info refresh">Refresh</a>
 <table class="world">
     <div class="counter">{{ live.counter }}</div>
-    {% for i in live.world %}
+    {% for i in range(live.world|length) %}}
     <tr>
-        {% for j in i %}
-        {% if j == 1 %}
+        {% for j in range(live.world[i]|length) %}
+        {% if live.world[i][j] %}
         <td class="cell living-cell"></td>
+        {% elif not live.world[i][j] and live.old_world[i][j] %}
+        <td class="cell dead-cell"></td>
         {% else %}
         <td class="cell"></td>
         {% endif %}
